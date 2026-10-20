@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BrightWash Pro | Instant Pressure Washing Estimate</title>
+  <meta name="description" content="Get an instant pressure washing estimate for your house, driveway, deck, or fence.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c3.5 4.6 6 8 6 11a6 6 0 0 1-12 0c0-3 2.5-6.4 6-11z"/></svg>
+        </span>
+        BrightWash Pro
+      </a>
+      <a class="header-cta" href="#quote">Get a quote</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Instant pressure washing estimates</h1>
+        <p class="lead">Enter your measurements below to see your price instantly, then send your request. We'll follow up to schedule.</p>
+        <ul class="trust">
+          <li>Licensed &amp; insured</li>
+          <li>No hidden fees</li>
+          <li>Satisfaction guaranteed</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container quote-section" id="quote">
+      <form id="quote-form" class="card form-card" novalidate>
+        <h2>Request your estimate</h2>
+
+        <fieldset>
+          <legend>1. Choose a service</legend>
+          <div class="service-grid" role="radiogroup">
+            <label class="service-option">
+              <input type="radio" name="service" value="house" checked>
+              <span><strong>House</strong><small>$0.15 / sq ft</small></span>
+            </label>
+            <label class="service-option">
+              <input type="radio" name="service" value="driveway">
+              <span><strong>Driveway</strong><small>$0.12 / sq ft</small></span>
+            </label>
+            <label class="service-option">
+              <input type="radio" name="service" value="deck">
+              <span><strong>Deck</strong><small>$0.30 / sq ft</small></span>
+            </label>
+            <label class="service-option">
+              <input type="radio" name="service" value="fence">
+              <span><strong>Fence</strong><small>$1.00 / linear ft</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Enter measurements</legend>
+          <div id="area-fields" class="row">
+            <div class="field">
+              <label for="length">Length (feet)</label>
+              <input id="length" name="length" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 50">
+              <p class="error" id="length-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="width">Width (feet)</label>
+              <input id="width" name="width" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 30">
+              <p class="error" id="width-error" aria-live="polite"></p>
+            </div>
+          </div>
+          <div id="fence-fields" class="row" hidden>
+            <div class="field">
+              <label for="linear">Total fence length (linear feet)</label>
+              <input id="linear" name="linear" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 120">
+              <p class="error" id="linear-error" aria-live="polite"></p>
+            </div>
+          </div>
+          <p class="hint" id="measure-hint">Measure the length and width of the surface. We'll calculate the area for you.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Your contact details</legend>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" maxlength="100">
+            <p class="error" id="name-error" aria-live="polite"></p>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" maxlength="150">
+              <p class="error" id="email-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567" maxlength="20">
+              <p class="error" id="phone-error" aria-live="polite"></p>
+            </div>
+          </div>
+          <!-- Spam trap: hidden from people, bots tend to fill it in -->
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+        </fieldset>
+
+        <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+        <p class="submit-summary">Estimated price: <strong id="summary-price">$150.00</strong></p>
+        <button type="submit" id="submit-btn" class="btn-primary">Send my estimate request</button>
+        <p class="fine-print">This is an estimate. The final price is confirmed after an on-site review.</p>
+      </form>
+
+      <aside class="card estimate-card" aria-live="polite">
+        <p class="estimate-label">Your instant estimate</p>
+        <p class="estimate-price" id="estimate-price">$150.00</p>
+        <dl class="breakdown">
+          <div><dt>Service</dt><dd id="bd-service">House washing</dd></div>
+          <div><dt id="bd-size-label">Area</dt><dd id="bd-size">—</dd></div>
+          <div><dt>Rate</dt><dd id="bd-rate">$0.15 / sq ft</dd></div>
+          <div><dt>Calculated</dt><dd id="bd-subtotal">—</dd></div>
+        </dl>
+        <p class="minimum-note" id="minimum-note">Minimum job price is $150.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> BrightWash Pro Pressure Washing. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
